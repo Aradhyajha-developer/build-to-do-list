@@ -1,18 +1,37 @@
+// ==========================
 // Select Elements
+// ==========================
+
 const form = document.getElementById("todo-form");
 const input = document.getElementById("todo-input");
 const todoList = document.getElementById("todo-list");
 
-// Store Todos
-let todos = [];
+const taskCount = document.getElementById("task-count");
 
+const allBtn = document.getElementById("all-btn");
+const activeBtn = document.getElementById("active-btn");
+const completedBtn = document.getElementById("completed-btn");
+
+// ==========================
+// Variables
+// ==========================
+
+let todos = [];
+let filter = "all";
+
+// ==========================
 // Add Task
+// ==========================
+
 form.addEventListener("submit", function (e) {
+
     e.preventDefault();
 
     const task = input.value.trim();
 
-    if (task === "") return;
+    if (task === "") {
+        return;
+    }
 
     const todo = {
         id: Date.now(),
@@ -25,34 +44,43 @@ form.addEventListener("submit", function (e) {
     renderTodos();
 
     input.value = "";
+
 });
 
+// ==========================
 // Render Todos
+// ==========================
+
 function renderTodos() {
 
     todoList.innerHTML = "";
 
-    todos.forEach(function (todo) {
+    let filteredTodos = todos;
+
+    if (filter === "active") {
+        filteredTodos = todos.filter(todo => !todo.completed);
+    } 
+    else if (filter === "completed") {
+        filteredTodos = todos.filter(todo => todo.completed);
+    }
+
+    filteredTodos.forEach(function (todo) {
 
         const li = document.createElement("li");
 
-        // Task Text
         const span = document.createElement("span");
         span.textContent = todo.text;
         span.style.cursor = "pointer";
 
-        // ✅ Line Through
         if (todo.completed) {
             span.style.textDecoration = "line-through";
             span.style.color = "#6b7280";
         }
 
-        // Complete Task
         span.addEventListener("click", function () {
             toggleComplete(todo.id);
         });
 
-        // Delete Button
         const deleteBtn = document.createElement("button");
         deleteBtn.textContent = "Delete";
         deleteBtn.className = "delete-btn";
@@ -68,39 +96,7 @@ function renderTodos() {
 
     });
 
-}
-
-// Toggle Complete
-function toggleComplete(id) {
-
-    todos = todos.map(function (todo) {
-
-        if (todo.id === id) {
-
-            return {
-                ...todo,
-                completed: !todo.completed
-            };
-
-        }
-
-        return todo;
-
-    });
-
-    renderTodos();
-
-}
-
-// Delete Todo
-function deleteTodo(id) {
-
-    todos = todos.filter(function (todo) {
-
-        return todo.id !== id;
-
-    });
-
-    renderTodos();
-
+    // ✅ correct counter
+    const activeTasks = todos.filter(todo => !todo.completed).length;
+    taskCount.textContent = `${activeTasks} Tasks Left`;
 }
