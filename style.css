@@ -9,30 +9,22 @@
 /* Body */
 body{
     font-family: Arial, sans-serif;
-    background: linear-gradient(-45deg,#4f46e5,#7c3aed,#06b6d4,#3b82f6);
-    background-size:400% 400%;
-    animation:gradientBG 10s ease infinite;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:100vh;
-}
+    background: linear-gradient(
+        135deg,
+        #0f172a,
+        #1e3a8a,
+        #2563eb,
+        #38bdf8
+    );
 
-@keyframes gradientBG{
+    background-size: 300% 300%;
+    animation: gradientBG 12s ease infinite;
 
-    0%{
-        background-position:0% 50%;
-    }
-
-    50%{
-        background-position:100% 50%;
-    }
-
-    100%{
-        background-position:0% 50%;
-    }
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 /* Container */
