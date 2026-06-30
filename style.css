@@ -1,15 +1,118 @@
-/* Reset some default spacing */
+/* Reset */
 
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-/* Body styling */
+/* Body */
 
 body{
 
-    font-family: Arial, sans-serif;
+    font-family:Arial,sans-serif;
+
+    background:#f3f4f6;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-height:100vh;
+
+}
+
+/* Container */
+
+.container{
+
+    width:100%;
+    max-width:450px;
+
+    background:#ffffff;
+
+    padding:30px;
+
+    border-radius:10px;
+
+    box-shadow:0 0 15px rgba(0,0,0,0.1);
+
+}
+
+/* Heading */
+
+h1{
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+    color:#1f2937;
+
+}
+
+/* Form */
+
+form{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+/* Input */
+
+input{
+
+    flex:1;
+
+    padding:12px;
+
+    border:1px solid #d1d5db;
+
+    border-radius:5px;
+
+    outline:none;
+
+    font-size:16px;
+
+}
+
+/* Button */
+
+button{
+
+    background:#2563eb;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 18px;
+
+    border-radius:5px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+button:hover{
+
+    background:#1d4ed8;
+
+}
+
+/* Todo List */
+
+ul{
+
+    list-style:none;
+
+    margin-top:25px;
 
 }
