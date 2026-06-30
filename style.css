@@ -116,3 +116,29 @@ ul{
     margin-top:25px;
 
 }
+/* Todo Item */
+
+li{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px;
+    margin-bottom:10px;
+    background:#f9fafb;
+    border-radius:5px;
+
+}
+
+/* Delete Button */
+
+.delete-btn{
+
+    background:#ef4444;
+    color:white;
+    border:none;
+    padding:8px 12px;
+    border-radius:5px;
+    cursor:pointer;
+
+}

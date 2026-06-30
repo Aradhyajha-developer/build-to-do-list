@@ -45,15 +45,39 @@ form.addEventListener("submit", function (e) {
 
 // Display Todos
 
-function renderTodos() {
+function renderTodos(){
 
-    todoList.innerHTML = "";
+    todoList.innerHTML="";
 
     todos.forEach(function(todo){
 
-        const li = document.createElement("li");
+        // Create li
 
-        li.textContent = todo.text;
+        const li=document.createElement("li");
+
+        // Create span
+
+        const span=document.createElement("span");
+
+        span.textContent=todo.text;
+
+        // Create button
+
+        const deleteBtn=document.createElement("button");
+
+        deleteBtn.textContent="Delete";
+
+        deleteBtn.classList.add("delete-btn");
+
+        // Add span inside li
+
+        li.appendChild(span);
+
+        // Add button inside li
+
+        li.appendChild(deleteBtn);
+
+        // Add li inside ul
 
         todoList.appendChild(li);
 
