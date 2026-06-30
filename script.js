@@ -68,6 +68,11 @@ function renderTodos(){
         deleteBtn.textContent="Delete";
 
         deleteBtn.classList.add("delete-btn");
+        deleteBtn.addEventListener("click", function () {
+
+    deleteTodo(todo.id);
+
+});
 
         // Add span inside li
 
@@ -82,5 +87,16 @@ function renderTodos(){
         todoList.appendChild(li);
 
     });
+
+}
+function deleteTodo(id){
+
+    todos = todos.filter(function(todo){
+
+        return todo.id !== id;
+
+    });
+
+    renderTodos();
 
 }
