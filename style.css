@@ -12,7 +12,7 @@ body{
 
     font-family:Arial,sans-serif;
 
-    background:#f3f4f6;
+    background:#5375b8;
 
     display:flex;
 
@@ -31,7 +31,7 @@ body{
     width:100%;
     max-width:450px;
 
-    background:#ffffff;
+    background:#cf7878;
 
     padding:30px;
 
@@ -141,4 +141,26 @@ li{
     border-radius:5px;
     cursor:pointer;
 
+}
+.completed {
+    text-decoration: line-through;
+    color: rgb(122, 5, 246);
+}
+li{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px;
+    margin:10px 0;
+    background:#f3f4f6;
+    border-radius:5px;
+}
+
+.delete-btn{
+    background:#ef4444;
+    color:white;
+    border:none;
+    padding:8px 12px;
+    border-radius:5px;
+    cursor:pointer;
 }

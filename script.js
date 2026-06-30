@@ -1,97 +1,101 @@
 // Select Elements
-
 const form = document.getElementById("todo-form");
 const input = document.getElementById("todo-input");
 const todoList = document.getElementById("todo-list");
 
 // Store Todos
-
 let todos = [];
 
-// Form Submit Event
-
+// Add Task
 form.addEventListener("submit", function (e) {
-
     e.preventDefault();
 
     const task = input.value.trim();
 
-    if (task === "") {
-        return;
-    }
-
-    // Create Todo Object
+    if (task === "") return;
 
     const todo = {
-
         id: Date.now(),
-        text: task
-
+        text: task,
+        completed: false
     };
-
-    // Store in Array
 
     todos.push(todo);
 
-    // Show on Screen
-
     renderTodos();
 
-    // Clear Input
-
     input.value = "";
-
 });
 
-// Display Todos
+// Render Todos
+function renderTodos() {
 
-function renderTodos(){
+    todoList.innerHTML = "";
 
-    todoList.innerHTML="";
+    todos.forEach(function (todo) {
 
-    todos.forEach(function(todo){
+        const li = document.createElement("li");
 
-        // Create li
+        // Task Text
+        const span = document.createElement("span");
+        span.textContent = todo.text;
+        span.style.cursor = "pointer";
 
-        const li=document.createElement("li");
+        // ✅ Line Through
+        if (todo.completed) {
+            span.style.textDecoration = "line-through";
+            span.style.color = "#6b7280";
+        }
 
-        // Create span
+        // Complete Task
+        span.addEventListener("click", function () {
+            toggleComplete(todo.id);
+        });
 
-        const span=document.createElement("span");
+        // Delete Button
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "Delete";
+        deleteBtn.className = "delete-btn";
 
-        span.textContent=todo.text;
-
-        // Create button
-
-        const deleteBtn=document.createElement("button");
-
-        deleteBtn.textContent="Delete";
-
-        deleteBtn.classList.add("delete-btn");
         deleteBtn.addEventListener("click", function () {
-
-    deleteTodo(todo.id);
-
-});
-
-        // Add span inside li
+            deleteTodo(todo.id);
+        });
 
         li.appendChild(span);
-
-        // Add button inside li
-
         li.appendChild(deleteBtn);
-
-        // Add li inside ul
 
         todoList.appendChild(li);
 
     });
 
 }
-function deleteTodo(id){
 
-    todos = todos.filter(function(todo){
+// Toggle Complete
+function toggleComplete(id) {
+
+    todos = todos.map(function (todo) {
+
+        if (todo.id === id) {
+
+            return {
+                ...todo,
+                completed: !todo.completed
+            };
+
+        }
+
+        return todo;
+
+    });
+
+    renderTodos();
+
+}
+
+// Delete Todo
+function deleteTodo(id) {
+
+    todos = todos.filter(function (todo) {
 
         return todo.id !== id;
 
