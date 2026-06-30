@@ -100,3 +100,68 @@ function renderTodos() {
     const activeTasks = todos.filter(todo => !todo.completed).length;
     taskCount.textContent = `${activeTasks} Tasks Left`;
 }
+// ==========================
+// Toggle Complete
+// ==========================
+
+function toggleComplete(id) {
+
+    todos = todos.map(function (todo) {
+
+        if (todo.id === id) {
+
+            return {
+                ...todo,
+                completed: !todo.completed
+            };
+
+        }
+
+        return todo;
+
+    });
+
+    renderTodos();
+
+}
+
+// ==========================
+// Delete Todo
+// ==========================
+
+function deleteTodo(id) {
+
+    todos = todos.filter(function (todo) {
+
+        return todo.id !== id;
+
+    });
+
+    renderTodos();
+
+}
+
+// ==========================
+// Filter Buttons
+// ==========================
+
+allBtn.addEventListener("click", function () {
+
+    filter = "all";
+    renderTodos();
+
+});
+
+activeBtn.addEventListener("click", function () {
+
+    filter = "active";
+    renderTodos();
+
+});
+
+completedBtn.addEventListener("click", function () {
+
+    filter = "completed";
+    renderTodos();
+
+});
